@@ -1,0 +1,19 @@
+version: "3.1"
+
+services:
+    eureka-server:
+      image: eureka-server
+      ports:
+      - 8333:8333
+      
+    attendance-microservice:
+      image: attendance-microservice
+    
+    event-store:
+      image: event-store
+         
+    api-gateway:
+      image: api-gateway
+      ports:
+      - 8444:8444  
+      
