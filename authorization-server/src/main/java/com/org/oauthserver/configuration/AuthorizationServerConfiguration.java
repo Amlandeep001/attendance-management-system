@@ -58,7 +58,11 @@ public class AuthorizationServerConfiguration
 	{
 		OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 
+		/*OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = OAuth2AuthorizationServerConfigurer
+				.authorizationServer().oidc(Customizer.withDefaults()); // Enable OpenID Connect 1.0, code for Spring Boot 3.4.0
+		*/
 		http
+				// .with(authorizationServerConfigurer, Customizer.withDefaults())
 				.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
 				.oidc(Customizer.withDefaults());
 
