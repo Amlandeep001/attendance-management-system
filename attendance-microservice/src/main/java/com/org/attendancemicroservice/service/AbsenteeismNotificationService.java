@@ -26,10 +26,11 @@ public class AbsenteeismNotificationService
 		List<Attendance> absentEmployees = attendanceRepository.findAbsentEmployeesByDate(date);
 		for(Attendance attendance : absentEmployees)
 		{
-			String employeeId = attendance.getEmployeeId();
-			String recipientEmail = attendance.getEmailId();
-			String subject = "Absenteeism Notification";
-			String content = "You have been marked as absent. Please contact your manager for further information.";
+			final String employeeId = attendance.getEmployeeId();
+			final String recipientEmail = attendance.getEmailId();
+			final String subject = "Absenteeism Notification";
+			final String content = "You have been marked as absent. Please contact your manager for further information.";
+			// Send notification to absentee employee using notification service
 			notificationService.sendNotification(employeeId, date, recipientEmail, subject, content);
 		}
 	}

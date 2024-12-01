@@ -25,9 +25,9 @@ public class AttendanceCalculatorService
 		String[] parts = message.split(" ");
 
 		// Extract employeeId, totalHours, and date from the message
-		String employeeInfo = parts[1];
-		double totalHours = Double.parseDouble(parts[3]);
-		LocalDate date = LocalDate.parse(parts[parts.length - 1], DateTimeFormatter.ISO_DATE);
+		final String employeeInfo = parts[1];
+		final double totalHours = Double.parseDouble(parts[3]);
+		final LocalDate date = LocalDate.parse(parts[parts.length - 1], DateTimeFormatter.ISO_DATE);
 
 		// Use the extracted information to calculate attendance
 		AttendanceStatus status = this.calculateAttendanceStatus(totalHours);
