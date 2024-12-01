@@ -24,8 +24,8 @@ public class AbsenteeismScehdulerConfig
 	@Scheduled(cron = "0 0/2 * * * ?")
 	public void checkAbsenteeismAndNotify()
 	{
-		LocalDate presentDay = LocalDate.now();
-		LocalDate lastDay = presentDay.minusDays(1);
+		final LocalDate presentDay = LocalDate.now();
+		final LocalDate lastDay = presentDay.minusDays(1);
 
 		absenteeismNotificationService.checkAbsenteeismAndNotify(lastDay);
 	}
