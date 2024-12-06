@@ -56,17 +56,22 @@ public class AuthorizationServerConfiguration
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception
 	{
-		OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
-
-		/*OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = OAuth2AuthorizationServerConfigurer
-				.authorizationServer().oidc(Customizer.withDefaults()); // Enable OpenID Connect 1.0, code for Spring Boot 3.4.0
-		*/
+		// Create and apply the Authorization Server configurer
+		OAuth2AuthorizationServerConfigurer authorizationServerConfigurer =
+				OAuth2AuthorizationServerConfigurer.authorizationServer();
 		http
-				// .with(authorizationServerConfigurer, Customizer.withDefaults())
-				.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
-				.oidc(Customizer.withDefaults());
+			.securityMatcher(authorizationServerConfigurer.getEndpointsMatcher())
+			.with(authorizationServerConfigurer, Customizer.withDefaults());
 
-		return http.formLogin(Customizer.withDefaults()).build();
+        // Configure OIDC support
+        http
+            .getConfigurer(OAuth2AuthorizationServerConfigurer.class)
+            .oidc(Customizer.withDefaults()); // Enable OpenID Connect (OIDC)
+
+        // Configure form login for the Authorization Server
+        return http
+            .formLogin(Customizer.withDefaults())
+            .build();
 	}
 
 	@Bean
