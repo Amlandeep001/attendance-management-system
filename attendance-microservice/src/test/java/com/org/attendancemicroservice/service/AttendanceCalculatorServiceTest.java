@@ -12,7 +12,6 @@ import static org.mockito.Mockito.verify;
 
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -26,18 +25,11 @@ import com.org.attendancemicroservice.model.Attendance;
 @ExtendWith(MockitoExtension.class)
 public class AttendanceCalculatorServiceTest
 {
-
 	@Mock
 	private AttendanceService attendanceService; // Mocking AttendanceService
 
 	@InjectMocks
 	private AttendanceCalculatorService attendanceCalculatorService; // Injecting Mock into class under test
-
-	@BeforeEach
-	void setUp()
-	{
-		// No need for explicit setup due to @InjectMocks
-	}
 
 	@Test
 	void testCalculateAndPersistAttendance_Present()
