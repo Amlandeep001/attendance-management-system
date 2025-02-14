@@ -17,9 +17,9 @@ public class AttendanceService
 		this.attendanceRepository = attendanceRepository;
 	}
 
-	public Attendance saveAttendance(Attendance attendance)
+	public void saveAttendance(Attendance attendance)
 	{
-		return attendanceRepository.save(attendance);
+		attendanceRepository.save(attendance);
 	}
 
 	public Attendance getAttendance(String employeeId, LocalDate date)
