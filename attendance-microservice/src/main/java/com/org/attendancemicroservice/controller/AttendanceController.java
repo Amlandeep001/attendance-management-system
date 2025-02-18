@@ -24,7 +24,7 @@ public class AttendanceController
 	}
 
 	@GetMapping("/{employeeId}/{date}")
-	public ResponseEntity<String> getAttendance(@PathVariable String employeeId, @PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date)
+	public ResponseEntity<String> getAttendance(@PathVariable String employeeId, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date)
 	{
 		Attendance attendance = attendanceService.getAttendance(employeeId, date);
 
