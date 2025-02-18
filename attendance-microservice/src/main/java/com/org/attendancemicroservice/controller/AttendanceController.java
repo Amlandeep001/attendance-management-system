@@ -39,7 +39,7 @@ public class AttendanceController
 	}
 
 	@GetMapping("/total-hours/{employeeId}/{date}")
-	public ResponseEntity<String> getTotalHours(@PathVariable String employeeId, @PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date)
+	public ResponseEntity<String> getTotalHours(@PathVariable String employeeId, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date)
 	{
 		Double totalHours = attendanceService.getTotalHours(employeeId, date);
 		if(totalHours != null)
