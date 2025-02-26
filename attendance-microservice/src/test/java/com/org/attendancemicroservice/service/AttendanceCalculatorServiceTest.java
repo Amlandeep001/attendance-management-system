@@ -23,7 +23,7 @@ import com.org.attendancemicroservice.constant.AttendanceStatus;
 import com.org.attendancemicroservice.model.Attendance;
 
 @ExtendWith(MockitoExtension.class)
-public class AttendanceCalculatorServiceTest
+class AttendanceCalculatorServiceTest
 {
 	@Mock
 	private AttendanceService attendanceService; // Mocking AttendanceService
@@ -109,9 +109,7 @@ public class AttendanceCalculatorServiceTest
 
 		// When & Then: Expect an exception
 		assertThrows(ArrayIndexOutOfBoundsException.class, () ->
-		{
-			attendanceCalculatorService.calculateAndPersistAttendance(invalidMessage);
-		});
+                attendanceCalculatorService.calculateAndPersistAttendance(invalidMessage));
 
 		// Verify that saveAttendance was never called
 		verify(attendanceService, never()).saveAttendance(any(Attendance.class));
@@ -128,9 +126,7 @@ public class AttendanceCalculatorServiceTest
 
 		// When & Then: Expect exception
 		RuntimeException thrownException = assertThrows(RuntimeException.class, () ->
-		{
-			attendanceCalculatorService.calculateAndPersistAttendance(message);
-		});
+                attendanceCalculatorService.calculateAndPersistAttendance(message));
 
 		assertEquals("Database error", thrownException.getMessage());
 

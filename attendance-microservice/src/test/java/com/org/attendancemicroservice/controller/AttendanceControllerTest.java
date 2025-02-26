@@ -20,7 +20,7 @@ import com.org.attendancemicroservice.service.AttendanceService;
 import lombok.val;
 
 @SpringBootTest
-public class AttendanceControllerTest
+class AttendanceControllerTest
 {
 	@InjectMocks
 	private AttendanceController attendanceController;
@@ -29,10 +29,10 @@ public class AttendanceControllerTest
 	private AttendanceService attendanceService;
 
 	@Test
-	public void getAttendanceTest()
+	void getAttendanceTest()
 	{
 		final String employeeId = "12346";
-		final LocalDate date = LocalDate.of(2024, 03, 04);
+		final LocalDate date = LocalDate.of(2024, 3, 4);
 
 		val attendance = createAttendanceStub(employeeId, date);
 		final String stubbedResponse = "Required attendance info: " + attendance;
@@ -47,10 +47,10 @@ public class AttendanceControllerTest
 	}
 
 	@Test
-	public void getTotalHoursTest()
+	void getTotalHoursTest()
 	{
 		final String employeeId = "12346";
-		final LocalDate date = LocalDate.of(2024, 03, 04);
+		final LocalDate date = LocalDate.of(2024, 3, 4);
 		final Double totalHours = 3.00;
 
 		final String stubbedResponse = "Total hours for employee: " + employeeId + " on : " + date + " is: " + totalHours;
